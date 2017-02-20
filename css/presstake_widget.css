@@ -1,0 +1,105 @@
+.presstakeWidgetContainer{
+  display: block;
+  font: 14px/1.3em Arial, Verdana, sans-serif;
+}
+.presstakeWidget_landscape{
+  width: 100%;
+  max-width: 1000px;
+  min-width: 450px;
+  height: 100%;
+  max-height: 400px;
+  min-height: 200px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.presstakeWidgetHeader{
+  overflow: auto;
+}
+.presstakeCityContainer{
+  float: left;
+  margin: 5px;
+}
+.presstakeCityContent{
+  margin-left: 5px;
+}
+.presstakeMerchantContainer{
+  float: right;
+  margin: 5px;
+}
+.presstakeMerchantContent{
+  margin-left: 5px;
+  text-decoration: none;
+  color: #969595;
+}
+.presstakeListItemContainer{
+  width: 176px;
+  margin: 0 5px;
+  display: inline-block;
+  text-align: left;
+}
+.presstakeListButton{
+  height: 200px;
+  width: 30px;
+  cursor: pointer;
+  background: #f5f5f5;
+  border: none;
+  transition: background .5s ease;
+  outline: none;
+}
+.presstakeListButton:hover{
+  background: #efefef;
+}
+.presstakeListButton_left{
+  float: left;
+}
+.presstakeListContainer{
+  display: inline-block;
+  width: calc(100% - 60px);
+  height: 200px;
+  text-align: center;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.presstakeListButton_right{
+  float: right;
+}
+.presstakeListDescription{
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.presstakeListShopLink{
+  text-decoration: none;
+}
+.presstakeListPrice{
+  font-weight: bold;
+  font-size: 16px;
+}
+.presstakeShopButton{
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 238, 0.5);
+}
+.presstakeListImage{
+  display: block;
+  max-width: 100%;
+  max-height: 150px;
+  min-height: 100px;
+  margin: 0 auto;
+}
+.presstakeFooterLogo{
+  width: 50px;
+}
+.presstakeFooterLink{
+  display: inline-block;
+  text-decoration: none;
+  font-variant: small-caps;
+  background: #efefef;
+  padding: 3px 6px;
+  color: #00733f;
+  border-radius: 0 0 5px 5px;
+}
+.presstakeWidgetList{
+  height: 200px;
+}
+.presstakeWidgetFooter{
+  float: right;
+}

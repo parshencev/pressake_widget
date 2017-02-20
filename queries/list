@@ -1,0 +1,115 @@
+{
+  "status":"1",
+  "data":[
+    {
+      "id":"1231",
+      "name":"Брюки домашние",
+      "sitid":"12312",
+      "image":"https://www.vitek.ru/netcat_files/152/242/1259_0.jpg",
+      "price":"3199 \u0440.",
+      "on_sale":"1",
+      "linkName" : "simple.ru",
+      "itarget":{
+        "google_play":"0",
+        "appstore":"0"
+      },
+      "pl":{
+        "android":"1"
+      },
+      "tmpltype":"1"
+    },
+    {
+      "id":"1231",
+      "name":"Брюки домашние сочные обшитые вертикально как надо",
+      "sitid":"12312",
+      "image":"https://www.vitek.ru/netcat_files/152/242/1259_0.jpg",
+      "price":"3199 \u0440.",
+      "on_sale":"1",
+      "linkName" : "simple.ru",
+      "itarget":{
+        "google_play":"0",
+        "appstore":"0"
+      },
+      "pl":{
+        "android":"1"
+      },
+      "tmpltype":"1"
+    },
+    {
+      "id":"1231",
+      "name":"Брюки домашние",
+      "sitid":"12312",
+      "image":"https://www.vitek.ru/netcat_files/152/242/1259_0.jpg",
+      "price":"3199 \u0440.",
+      "on_sale":"1",
+      "linkName" : "simple.ru",
+      "itarget":{
+        "google_play":"0",
+        "appstore":"0"
+      },
+      "pl":{
+        "android":"1"
+      },
+      "tmpltype":"1"
+    },
+    {
+      "id":"1231",
+      "name":"Брюки домашние",
+      "sitid":"12312",
+      "image":"https://www.vitek.ru/netcat_files/152/242/1259_0.jpg",
+      "price":"3199 \u0440.",
+      "on_sale":"1",
+      "linkName" : "simple.ru",
+      "itarget":{
+        "google_play":"0",
+        "appstore":"0"
+      },
+      "pl":{
+        "android":"1"
+      },
+      "tmpltype":"1"
+    },
+    {
+      "id":"1231",
+      "name":"Брюки домашние",
+      "sitid":"12312",
+      "image":"https://www.vitek.ru/netcat_files/152/242/1259_0.jpg",
+      "price":"3199 \u0440.",
+      "on_sale":"1",
+      "linkName" : "simple.ru",
+      "itarget":{
+        "google_play":"0",
+        "appstore":"0"
+      },
+      "pl":{
+        "android":"1"
+      },
+      "tmpltype":"1"
+    },
+    {
+      "id":"1231",
+      "name":"Брюки домашние",
+      "sitid":"12312",
+      "image":"https://www.vitek.ru/netcat_files/152/242/1259_0.jpg",
+      "price":"3199 \u0440.",
+      "on_sale":"1",
+      "linkName" : "simple.ru",
+      "itarget":{
+        "google_play":"0",
+        "appstore":"0"
+      },
+      "pl":{
+        "android":"1"
+      },
+      "tmpltype":"1"
+    }
+  ],
+  "banId":"019ccf0366855291c9d7e9a604c2b4c1",
+  "responseType":"1",
+  "page":"181",
+  "requestStatus":"200",
+  "action":"getList",
+  "geo":{
+    "name":"Москва"
+  }
+}
