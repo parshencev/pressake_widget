@@ -473,7 +473,7 @@ var PRESSTAKE_WIDGET_CORE = {
 }
 PRESSTAKE_WIDGET_CORE.CONTROLLER.init({
   URLS: {
-    TARGET: window.location.host+"/",
+    TARGET: window.location.host + window.location.pathname,
     PARSE: "queries/parse",
     LIST: "queries/list",
     STAT: "queries/stat",
