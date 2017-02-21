@@ -15,7 +15,7 @@
     window.onload=function(){
       PRESSTAKE_WIDGET_CORE.CONTROLLER.init({
         URLS: {
-          TARGET: window.location.host + "/",
+          TARGET: window.location.host + window.location.pathname.match(/\/([aA-zZ]*)/)[1] + "/",
           PARSE: "queries/parse",
           LIST: "queries/list",
           STAT: "queries/stat",
