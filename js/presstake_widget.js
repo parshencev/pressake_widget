@@ -307,7 +307,7 @@ var PRESSTAKE_WIDGET_CORE = {
       var element = supportFunctionsElement.elementFunction,
           appendChilds = supportFunctionsElement.appendChildsFunction,
           listTags = dataList.map(function(listItem){
-            var listItemContainer = element('div', ['presstakeListItemContainer']),
+            var listItemContainer = element('a', ['presstakeListItemContainer'], {href: listItem.link}),
                 listItemImage = element('img', ['presstakeListImage'], {src: listItem.image, alt:"", title: listItem.name}),
                 listItemShopLink = element('a', ['presstakeListShopLink'], {href: listItem.link}, listItem.linkName),
                 listItemDescription = element('div', ['presstakeListDescription'], {title: listItem.name}, listItem.name),
@@ -340,7 +340,7 @@ var PRESSTAKE_WIDGET_CORE = {
     getFooter: function(frame, widgetInformation, supportFunctionsElement){
       var element = supportFunctionsElement.elementFunction,
           appendChilds = supportFunctionsElement.appendChildsFunction,
-          footerLink = element('a', ['presstakeFooterLink'], {href: "http://presstake.com"}, "presstake");
+          footerLink = element('a', ['presstakeFooterLink'], {href: "http://presstake.com"}, "powered by PressTake");
           /*footerLogo = element('img', ['presstakeFooterLogo'], {src: 'img/logo.png'});*/
       appendChilds(frame.querySelector("#"+widgetInformation.WIDGET_FOOTER_ID), [/*footerLogo,*/ footerLink]);
       return frame;
