@@ -84,6 +84,7 @@ var PRESSTAKE_WIDGET_CORE = {
 
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.LEFT_BUTTON_ID), eventsModel.leftButtonEvent, "click");
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.RIGHT_BUTTON_ID), eventsModel.rightButtonEvent, "click");
+            eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "mousewheel");
 
             renderModel.renderFrame(data.WIDGET_DATA, config.WIDGET_INFORMATION);
 
@@ -382,11 +383,29 @@ var PRESSTAKE_WIDGET_CORE = {
   EVENTS_MODEL:{
     leftButtonEvent: function(){
       var domList = document.querySelector("#"+PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_LIST_ID);
-      domList.scrollLeft -= PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.SCROLL_WEIGTH;
+      if (PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape"){
+        domList.scrollLeft -= PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.SCROLL_WEIGTH;
+      } else {
+        domList.scrollTop -= PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.SCROLL_WEIGTH;
+      }
     },
     rightButtonEvent: function(){
       var domList = document.querySelector("#"+PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_LIST_ID);
-      domList.scrollLeft += PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.SCROLL_WEIGTH;
+      if (PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape"){
+        domList.scrollLeft += PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.SCROLL_WEIGTH;
+      } else {
+        domList.scrollTop += PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.SCROLL_WEIGTH;
+      }
+    },
+    listContainerMouseWhellEvent(event){
+      var domList = document.querySelector("#"+PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_LIST_ID);
+      event = event || window.event;
+      if (PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape"){
+        domList.scrollLeft += event.deltaY;
+      } else {
+        domList.scrollTop += event.deltaY;
+      }
+      event.preventDefault();
     },
     addEventToElement: function(element, eventFunction, eventName){
       element.addEventListener(eventName, eventFunction);
