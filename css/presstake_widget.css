@@ -1,3 +1,4 @@
+/* Главный контейнер */
 .presstakeWidgetContainer{
   display: block;
   font: 14px/1.5em Arial, Verdana, sans-serif;
@@ -8,6 +9,13 @@
   max-width: 1000px;
   min-width: 450px;
 }
+.presstakeWidget_portrait{
+  width: 200px;
+  height: 100%;
+  max-height: 800px;
+  min-height: 400px;
+}
+/* Шапка */
 .presstakeWidgetHeader{
   overflow: auto;
 }
@@ -27,13 +35,9 @@
   text-decoration: none;
   color: #969595;
 }
-.presstakeListItemContainer{
-  width: 176px;
-  margin: 0 5px;
-  display: inline-block;
-  text-align: left;
-  text-decoration: none;
-  color: #000;
+/* Тело */
+.presstakeWidgetList{
+  height: 200px;
 }
 .presstakeListButton{
   height: 200px;
@@ -59,8 +63,21 @@
   white-space: nowrap;
   overflow-x: hidden;
 }
-.presstakeListButton_right{
-  float: right;
+.presstakeListItemContainer{
+  width: 176px;
+  margin: 0 5px;
+  display: inline-block;
+  text-align: left;
+  text-decoration: none;
+  color: #000;
+}
+.presstakeListImage{
+  display: block;
+  height: 125px;
+  margin: 0 auto;
+}
+.presstakeListShopLink{
+  text-decoration: none;
 }
 .presstakeListDescription{
   position: relative;
@@ -76,9 +93,6 @@
   position: absolute;
   right: 0;
   top: 0;
-}
-.presstakeListShopLink{
-  text-decoration: none;
 }
 .presstakeListPrice{
   display: inline-block;
@@ -102,13 +116,12 @@
   -webkit-transform: translateX(-5px);
           transform: translateX(-5px);
 }
-.presstakeListImage{
-  display: block;
-  height: 125px;
-  margin: 0 auto;
+.presstakeListButton_right{
+  float: right;
 }
-.presstakeFooterLogo{
-  width: 50px;
+/* подвал */
+.presstakeWidgetFooter{
+  float: right;
 }
 .presstakeFooterLink{
   display: inline-block;
@@ -118,9 +131,4 @@
   color: #00733f;
   border-radius: 0 0 5px 5px;
 }
-.presstakeWidgetList{
-  height: 200px;
-}
-.presstakeWidgetFooter{
-  float: right;
-}
+
