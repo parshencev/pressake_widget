@@ -52,6 +52,8 @@ var PRESSTAKE_WIDGET_CORE = {
           eventsModel = PRESSTAKE_WIDGET_CORE.EVENTS_MODEL,
           listCallbackSuccess = function(responce){
 
+            data.QUERY_DATA.QUERY_TICK = 0;
+
             data.LIST = middlewareModel.listQueryAdditional(
               responce,
               urlModel.getTrackingQueryUrl,
@@ -85,7 +87,24 @@ var PRESSTAKE_WIDGET_CORE = {
 
             renderModel.renderFrame(data.WIDGET_DATA, config.WIDGET_INFORMATION);
 
-            // 2 запроса на статистику, показался и открылся
+            queryModel.ajaxQuery(
+              urlModel.getStatQueryUrl(config.URLS, config.USER_INFORMATION, config.SERVER_INFORMATION, "vis"),
+              callbackSuccess,
+              callbackError,
+              queryModel.ajaxQuery,
+              config.SERVER_INFORMATION,
+              config.WIDGET_INFORMATION,
+              data.QUERY_DATA
+            );
+            queryModel.ajaxQuery(
+              urlModel.getStatQueryUrl(config.URLS, config.USER_INFORMATION, config.SERVER_INFORMATION),
+              callbackSuccess,
+              callbackError,
+              queryModel.ajaxQuery,
+              config.SERVER_INFORMATION,
+              config.WIDGET_INFORMATION,
+              data.QUERY_DATA
+            );
           },
           parseCallbackSuccess = function(responce){
             information_model.appendInformation(information_model.getParseQueryInformation(responce), config);
@@ -102,11 +121,15 @@ var PRESSTAKE_WIDGET_CORE = {
           },
           callbackError = function(){
             document.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LOADER_ID).style.display = "none";
+          },
+          callbackSuccess = function(){
+            data.QUERY_DATA.QUERY_TICK = 0;
           };
 
       listCallbackSuccess = listCallbackSuccess.bind(this);
       parseCallbackSuccess = parseCallbackSuccess.bind(this);
       callbackError = callbackError.bind(this);
+      callbackSuccess = callbackSuccess.bind(this);
 
       if (information){
         information_model.updateInformation(information, config);
@@ -442,7 +465,7 @@ var PRESSTAKE_WIDGET_CORE = {
                          + '&pgid=' + encodeURIComponent(serverInformation.PAGE)
                          + '&ovid=' + encodeURIComponent(serverInformation.BANID);
       if (action){
-        attrebutes += '&action='+action;
+        attributes += '&action='+action;
       }
       return userInformation.PROTOCOL + urls.TARGET + urls.STAT + attributes;
     },
