@@ -401,11 +401,11 @@ var PRESSTAKE_WIDGET_CORE = {
       request.onreadystatechange = function () {
         if (request.status == 200 && request.readyState == 4){
           var responce = JSON.parse(request.responseText);
-          if (errorStatuses.indexOf(responce.status) >= 0 /*|| errorStatuses.indexOf(responce.requestStatus) >= 0*/ || errorStatuses.indexOf(responce.responceType) >= 0){
+          if (errorStatuses.indexOf(responce.status) >= 0 || errorStatuses.indexOf(responce.responceType) >= 0){
             callbackError();
-          } else if (successStatuses.indexOf(responce.status) >= 0 /*|| successStatuses.indexOf(responce.requestStatus) >= 0*/ || successStatuses.indexOf(responce.responceType) >= 0) {
+          } else if (successStatuses.indexOf(responce.status) >= 0 || successStatuses.indexOf(responce.responceType) >= 0) {
             callbackSuccess(responce);
-          } else if (waitStatuses.indexOf(responce.status) >= 0 /*|| waitStatuses.indexOf(responce.requestStatus)*/ >= 0 || waitStatuses.indexOf(responce.responceType) >= 0) {
+          } else if (waitStatuses.indexOf(responce.status) >= 0 || waitStatuses.indexOf(responce.responceType) >= 0) {
             if (queryData.QUERY_TICK < widgetInformation.TICK_LIMIT){
               var timeoutID = setTimeout((function(){
                 callbackWait(url, callbackSuccess, callbackError, callbackWait, serverInformation, widgetInformation, queryData);
