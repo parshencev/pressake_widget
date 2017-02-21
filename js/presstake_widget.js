@@ -318,8 +318,7 @@ var PRESSTAKE_WIDGET_CORE = {
       var element = supportFunctionsElement.elementFunction,
           appendChilds = supportFunctionsElement.appendChildsFunction,
           container = element('noindex', ['presstakeWidgetContainer', widgetInformation.WIDGET_ORIENTATION_CLASS], {
-            id: widgetInformation.WIDGET_ID,
-            style: "width:" + widgetInformation.WIDGET_WIDTH + "; height:"+ widgetInformation.WIDGET_HEIGHT
+            id: widgetInformation.WIDGET_ID
           }),
           header = element('div', ['presstakeWidgetHeader'], {id: widgetInformation.WIDGET_HEADER_ID}),
           body = element('div', ['presstakeWidgetList'], {id: widgetInformation.WIDGET_BODY_ID}),
