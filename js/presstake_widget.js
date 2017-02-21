@@ -340,8 +340,16 @@ var PRESSTAKE_WIDGET_CORE = {
             return listItemContainer;
           }),
           listContainer = element('div', ['presstakeListContainer'], {id: widgetInformation.WIDGET_LIST_ID}),
-          leftButton = element('input', ['presstakeListButton', 'presstakeListButton_left'], {id: widgetInformation.LEFT_BUTTON_ID, type: "button", value: "<"}),
-          rightButton = element('input', ['presstakeListButton', 'presstakeListButton_right'], {id: widgetInformation.RIGHT_BUTTON_ID, type: "button", value: ">"});
+          leftButton = element('input', ['presstakeListButton', 'presstakeListButton_left'], {
+            id: widgetInformation.LEFT_BUTTON_ID,
+            type: "button",
+            value: (widgetInformation.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape" ? "<" : "˄")
+          }),
+          rightButton = element('input', ['presstakeListButton', 'presstakeListButton_right'], {
+            id: widgetInformation.RIGHT_BUTTON_ID,
+            type: "button",
+            value: (widgetInformation.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape" ? ">" : "˅")
+          });
       appendChilds(listContainer, listTags);
       appendChilds(frame.querySelector("#"+widgetInformation.WIDGET_BODY_ID), [leftButton, listContainer, rightButton]);
       return frame;
@@ -369,7 +377,11 @@ var PRESSTAKE_WIDGET_CORE = {
       return frame;
     },
     renderFrame: function(frame, widgetInformation){
-      var domElement = document.querySelector("#"+widgetInformation.WIDGET_LOADER_ID);
+      if (document.querySelector("#"+widgetInformation.WIDGET_LOADER_ID)){
+        var domElement = document.querySelector("#"+widgetInformation.WIDGET_LOADER_ID);
+      } else {
+        var domElement = document.querySelector("#"+widgetInformation.WIDGET_ID);
+      }
       domElement.parentNode.replaceChild(frame, domElement);
     },
     renderLinks: function(frame, widgetInformation){
@@ -511,13 +523,4 @@ var PRESSTAKE_WIDGET_CORE = {
       return userInformation.PROTOCOL + urls.TARGET + urls.TRACKING + attributes;
     }
   }
-}
-PRESSTAKE_WIDGET_CORE.CONTROLLER.init({
-  URLS: {
-    TARGET: window.location.host + window.location.pathname,
-    PARSE: "queries/parse",
-    LIST: "queries/list",
-    STAT: "queries/stat",
-    TRACKING: "queries/track"
-  }
-});
+};
