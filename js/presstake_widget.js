@@ -87,6 +87,8 @@ var PRESSTAKE_WIDGET_CORE = {
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.RIGHT_BUTTON_ID), eventsModel.rightButtonEvent, "click");
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "mousewheel");
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "DOMMouseScroll");
+            eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerTouchStartEvent, "touchstart");
+            eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerTouchMoveEvent, "touchmove");
 
             renderModel.renderCss(urlModel.getCssUrl(config.URLS, config.USER_INFORMATION), supportFunctions.RENDER);
 
@@ -418,15 +420,43 @@ var PRESSTAKE_WIDGET_CORE = {
         domList.scrollTop += PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.SCROLL_WEIGTH;
       }
     },
-    listContainerMouseWhellEvent(event){
+    listContainerMouseWhellEvent: function(event){
       var domList = document.querySelector("#"+PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_LIST_ID);
       event = event || window.event;
       var deltaY = event.detail || event.wheelDelta || event.deltaY;
       if (PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape"){
-        domList.scrollLeft += Math.abs(deltaY) == 100 ? deltaY : (Math.sign(deltaY) * 100 * -1);
+        domList.scrollLeft += Math.abs(deltaY) == 100 ? deltaY : (Math.sign(deltaY) * 100 * (/Firefox/i.test(navigator.userAgent) ? 1 : -1));
       } else {
         domList.scrollTop += Math.abs(deltaY) == 100 ? deltaY : (Math.sign(deltaY) * 100 * (/Firefox/i.test(navigator.userAgent) ? 1 : -1));
       }
+      event.preventDefault();
+    },
+    listContainerTouchStartEvent: function(event){
+      event = event || window.event;
+      var x = event.targetTouches[0].clientX,
+          y = event.targetTouches[0].clientY;
+      this.touchPosition = {
+        x: x,
+        y: y
+      };
+    },
+    listContainerTouchMoveEvent: function(event){
+      event = event || window.event;
+      var startX = this.touchPosition.x,
+          startY = this.touchPosition.y,
+          endX = event.targetTouches[0].clientX,
+          endY = event.targetTouches[0].clientY,
+          differenceX = startX - endX,
+          differenceY = startY - endY;
+      if (PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape"){
+        this.scrollLeft += differenceX;
+      } else {
+        this.scrollTop += differenceY;
+      }
+      this.touchPosition = {
+        x: endX,
+        y: endY
+      };
       event.preventDefault();
     },
     addEventToElement: function(element, eventFunction, eventName){
