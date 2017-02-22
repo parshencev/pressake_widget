@@ -423,10 +423,10 @@ var PRESSTAKE_WIDGET_CORE = {
       event = event || window.event;
       var deltaY = event.detail || event.wheelDelta || event.deltaY;
       if (PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape"){
-        domList.scrollLeft += Math.abs(deltaY) == 100 ? deltaY : (Math.sign(deltaY) * 100 * -1);
+        domList.scrollLeft += Math.abs(deltaY) == 100 ? deltaY : (Math.sign(deltaY) * 100);
         console.log(deltaY);
       } else {
-        domList.scrollTop += Math.abs(deltaY) == 100 ? deltaY : (Math.sign(deltaY) * 100 * -1);
+        domList.scrollTop += Math.abs(deltaY) == 100 ? deltaY : (Math.sign(deltaY) * 100);
         console.log(deltaY);
       }
       event.preventDefault();
