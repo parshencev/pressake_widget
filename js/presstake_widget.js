@@ -1,10 +1,11 @@
 var PRESSTAKE_WIDGET_CORE = {
   CONFIG:{
     URLS:{
-      TARGET:"",
-      LIST:"",
-      PARSE:"",
-      STAT:""
+      TARGET:"presstake.com/",
+      LIST:"banner/index.php",
+      PARSE:"bpage/banner.php",
+      STAT:"stat/index.php",
+      CSS:"widget-client/css/presstake_widget.css"
     },
     USER_INFORMATION:{
 
@@ -85,6 +86,9 @@ var PRESSTAKE_WIDGET_CORE = {
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.LEFT_BUTTON_ID), eventsModel.leftButtonEvent, "click");
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.RIGHT_BUTTON_ID), eventsModel.rightButtonEvent, "click");
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "mousewheel");
+            eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "onmousewheel");
+
+            renderModel.renderCss(urlModel.getCssUrl(config.URLS, config.USER_INFORMATION), supportFunctions.RENDER);
 
             renderModel.renderFrame(data.WIDGET_DATA, config.WIDGET_INFORMATION);
 
@@ -384,6 +388,12 @@ var PRESSTAKE_WIDGET_CORE = {
       }
       domElement.parentNode.replaceChild(frame, domElement);
     },
+    renderCss:function(cssUrl, supportFunctions){
+      var element = supportFunctions.elementFunction,
+          link = element("link", [], {rel:"stylesheet", href: cssUrl}),
+          head = document.head;
+      head.appendChild(link);
+    },
     renderLinks: function(frame, widgetInformation){
       var linksDomContainer = document.querySelector("#"+widgetInformation.WIDGET_BODY_ID),
           linksElement = frame.querySelector("#"+widgetInformation.WIDGET_BODY_ID),
@@ -521,6 +531,9 @@ var PRESSTAKE_WIDGET_CORE = {
                          + '&item=' + encodeURIComponent(item.sitid)
                          + '&ovid=' + encodeURIComponent(serverInformation.BANID);
       return userInformation.PROTOCOL + urls.TARGET + urls.TRACKING + attributes;
+    },
+    getCssUrl: function(urls, userInformation){
+      return userInformation.PROTOCOL + urls.TARGET + urls.CSS;
     }
   }
 };
