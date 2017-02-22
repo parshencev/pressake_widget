@@ -425,7 +425,7 @@ var PRESSTAKE_WIDGET_CORE = {
       if (PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape"){
         domList.scrollLeft += Math.abs(deltaY) == 100 ? deltaY : (Math.sign(deltaY) * 100 * -1);
       } else {
-        domList.scrollTop += Math.abs(deltaY) == 100 ? deltaY : (Math.sign(deltaY) * 100);
+        domList.scrollTop += Math.abs(deltaY) == 100 ? deltaY : (Math.sign(deltaY) * 100 * -1);
       }
       event.preventDefault();
     },
