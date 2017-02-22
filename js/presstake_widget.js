@@ -421,10 +421,11 @@ var PRESSTAKE_WIDGET_CORE = {
     listContainerMouseWhellEvent(event){
       var domList = document.querySelector("#"+PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_LIST_ID);
       event = event || window.event;
+      var deltaY = event.detail || event.wheelDelta || event.deltaY;
       if (PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape"){
-        domList.scrollLeft += Math.abs((event.detail || event.wheelDelta || event.deltaY)) >= 100 ? (event.detail || event.wheelDelta || event.deltaY) : Math.sign((event.detail || event.wheelDelta || event.deltaY)) * 100;
+        domList.scrollLeft += Math.abs(deltaY) == 100 ? deltaY : Math.sign(deltaY) * 100;
       } else {
-        domList.scrollTop += Math.abs((event.detail || event.wheelDelta || event.deltaY)) >= 100 ? (event.detail || event.wheelDelta || event.deltaY) : Math.sign((event.detail || event.wheelDelta || event.deltaY)) * 100;
+        domList.scrollTop += Math.abs(deltaY) == 100 ? deltaY : Math.sign(deltaY) * 100;
       }
       event.preventDefault();
     },
