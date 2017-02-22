@@ -422,9 +422,9 @@ var PRESSTAKE_WIDGET_CORE = {
       var domList = document.querySelector("#"+PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_LIST_ID);
       event = event || window.event;
       if (PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape"){
-        domList.scrollLeft += event.deltaY || event.detail || event.wheelDelta;
+        domList.scrollLeft += event.detail || event.wheelDelta || event.deltaY;
       } else {
-        domList.scrollTop += event.deltaY || event.detail || event.wheelDelta;
+        domList.scrollTop += event.detail || event.wheelDelta || event.deltaY;
       }
       event.preventDefault();
     },
