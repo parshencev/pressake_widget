@@ -87,6 +87,7 @@ var PRESSTAKE_WIDGET_CORE = {
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.RIGHT_BUTTON_ID), eventsModel.rightButtonEvent, "click");
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "mousewheel");
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "onmousewheel");
+            eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "MozMousePixelScroll");
 
             renderModel.renderCss(urlModel.getCssUrl(config.URLS, config.USER_INFORMATION), supportFunctions.RENDER);
 
