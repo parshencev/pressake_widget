@@ -94,6 +94,14 @@
   text-align: left;
   text-decoration: none;
   color: #000;
+  overflow-y: auto;
+  padding: 5px;
+  box-sizing: border-box;
+  -webkit-transition: box-shadow .5s ease;
+  transition: box-shadow .5s ease;
+}
+.presstakeListItemContainer:hover{
+  box-shadow: inset 0 0 0px 1px #00b900;
 }
 .presstakeWidget_landscape .presstakeListItemContainer{
   width: 176px;
@@ -102,7 +110,7 @@
 }
 .presstakeWidget_portrait .presstakeListItemContainer{
   display: block;
-  margin: 5px 0;
+
 }
 .presstakeListImage{
   display: block;
