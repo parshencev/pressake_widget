@@ -86,9 +86,6 @@ var PRESSTAKE_WIDGET_CORE = {
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.LEFT_BUTTON_ID), eventsModel.leftButtonEvent, "click");
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.RIGHT_BUTTON_ID), eventsModel.rightButtonEvent, "click");
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "mousewheel");
-            eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "onmousewheel");
-            eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "MozMousePixelScroll");
-            eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "wheel");
             eventsModel.addEventToElement(data.WIDGET_DATA.querySelector("#"+config.WIDGET_INFORMATION.WIDGET_LIST_ID), eventsModel.listContainerMouseWhellEvent, "DOMMouseScroll");
 
             renderModel.renderCss(urlModel.getCssUrl(config.URLS, config.USER_INFORMATION), supportFunctions.RENDER);
@@ -425,9 +422,9 @@ var PRESSTAKE_WIDGET_CORE = {
       var domList = document.querySelector("#"+PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_LIST_ID);
       event = event || window.event;
       if (PRESSTAKE_WIDGET_CORE.CONFIG.WIDGET_INFORMATION.WIDGET_ORIENTATION_CLASS == "presstakeWidget_landscape"){
-        domList.scrollLeft += event.deltaY;
+        domList.scrollLeft += event.deltaY || event.detail || event.wheelDelta;
       } else {
-        domList.scrollTop += event.deltaY;
+        domList.scrollTop += event.deltaY || event.detail || event.wheelDelta;
       }
       event.preventDefault();
     },
