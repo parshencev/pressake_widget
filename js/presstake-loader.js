@@ -1131,8 +1131,6 @@ $pt.WidgetView.prototype = {
       container = touch.clientX;
     else
       container = touch.clientY;
-
-    event.preventDefault();
   },
 
   list_container_touch_move_event: function(event){
