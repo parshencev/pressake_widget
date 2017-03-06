@@ -4,12 +4,25 @@
   font: 14px/1.5em Arial, Verdana, sans-serif;
   overflow: hidden;
   margin: 0 auto;
+  padding: 5px;
+  border: 1px solid #9cce9c;
 }
-.presstakeWidget_landscape{
+.presstakeWidgetContainer.small{
+  font-size: 10px;
+  line-height: 1em;
+  padding: 0;
+}
+.presstakeWidget_horizontal{
   max-width: 1000px;
   min-width: 450px;
 }
-.presstakeWidget_portrait{
+.presstakeWidget_horizontal.small{
+  max-width: inherit;
+  min-width: inherit;
+  width: 100%;
+  height: 100%;
+}
+.presstakeWidget_vertical{
   width: 200px;
   height: 100%;
   max-height: 800px;
@@ -19,36 +32,42 @@
 .presstakeWidgetHeader{
   overflow: auto;
 }
-.presstakeWidget_landscape .presstakeCityContainer{
+.presstakeWidgetContainer.small .presstakeWidgetHeader{
+  display: none;
+}
+.presstakeWidget_horizontal .presstakeCityContainer{
   float: left;
   margin: 5px;
 }
-.presstakeWidget_portrait .presstakeCityContainer{
+.presstakeWidget_vertical .presstakeCityContainer{
   font-size: 12px;
 }
 .presstakeCityContent{
   margin-left: 5px;
 }
-.presstakeWidget_portrait .presstakeCityContent{
+.presstakeWidget_vertical .presstakeCityContent{
   white-space: nowrap;
 }
-.presstakeWidget_landscape .presstakeMerchantContainer{
+.presstakeWidget_horizontal .presstakeMerchantContainer{
   float: right;
   margin: 5px;
 }
-.presstakeWidget_portrait .presstakeMerchantContainer{
+.presstakeWidget_vertical .presstakeMerchantContainer{
   font-size: 12px;
 }
 .presstakeMerchantContent{
   margin-left: 5px;
   text-decoration: none;
-  color: #969595;
+  color: #00733f;
 }
 /* Тело */
-.presstakeWidget_landscape .presstakeWidgetList{
+.presstakeWidget_horizontal .presstakeWidgetList{
   height: 200px;
 }
-.presstakeWidget_portrait .presstakeWidgetList{
+.presstakeWidget_horizontal.small .presstakeWidgetList{
+  height: 100%;
+}
+.presstakeWidget_vertical .presstakeWidgetList{
   height: calc(100% - 64px);
 }
 .presstakeListButton{
@@ -59,11 +78,15 @@
   transition: background .5s ease;
   outline: none;
 }
-.presstakeWidget_landscape .presstakeListButton{
+.presstakeWidget_horizontal .presstakeListButton{
   height: 200px;
   width: 30px;
 }
-.presstakeWidget_portrait .presstakeListButton{
+.presstakeWidget_horizontal.small .presstakeListButton{
+  height: 100%;
+  width: 20px;
+}
+.presstakeWidget_vertical .presstakeListButton{
   width: 100%;
   height: 30px;
   font-size: 16px;
@@ -71,23 +94,31 @@
 .presstakeListButton:hover{
   background: #efefef;
 }
-.presstakeWidget_landscape .presstakeListButton_left{
+.presstakeWidget_horizontal .presstakeListButton_left{
   float: left;
 }
 .presstakeListContainer{
   text-align: center;
 }
-.presstakeWidget_landscape .presstakeListContainer{
+.presstakeWidget_horizontal .presstakeListContainer{
   display: inline-block;
   width: calc(100% - 60px);
   height: 200px;
   white-space: nowrap;
   overflow-x: hidden;
 }
-.presstakeWidget_portrait .presstakeListContainer{
+.presstakeWidget_horizontal.small .presstakeListContainer{
+  width: calc(100% - 40px);
+}
+.presstakeWidget_vertical .presstakeListContainer{
   display: block;
   width: 100%;
   height: calc(100% - 60px);
+  max-height: 692px;
+  overflow-y: hidden;
+}
+.presstakeWidget_horizontal.small .presstakeListContainer{
+  height: 100%;
   overflow-y: hidden;
 }
 .presstakeListItemContainer{
@@ -100,24 +131,37 @@
   -webkit-transition: box-shadow .5s ease;
   transition: box-shadow .5s ease;
 }
+.presstakeWidgetContainer.small .presstakeListItemContainer{
+  height: 100%;
+}
 .presstakeListItemContainer:hover{
   box-shadow: inset 0 0 0px 1px #00b900;
 }
-.presstakeWidget_landscape .presstakeListItemContainer{
+.presstakeWidget_horizontal .presstakeListItemContainer{
   width: 176px;
   display: inline-block;
   margin: 0 5px;
 }
-.presstakeWidget_portrait .presstakeListItemContainer{
+.presstakeWidget_horizontal.small .presstakeListItemContainer{
+  width: 30%;
+  max-width: 100px;
+  overflow: hidden;
+  padding: 1px 2px;
+  margin: 0;
+}
+.presstakeWidget_vertical .presstakeListItemContainer{
   display: block;
-
 }
 .presstakeListImage{
   display: block;
   height: 117px;
   margin: 0 auto;
 }
+.presstakeWidgetContainer.small .presstakeListImage{
+  height: 52%;
+}
 .presstakeListShopLink{
+  display: none;
   text-decoration: none;
 }
 .presstakeListDescription{
@@ -135,11 +179,18 @@
   right: 0;
   top: 0;
 }
+.presstakeWidgetContainer.small .presstakeListDescription::after{
+  height: 10px;
+  width: 5px;
+}
 .presstakeListPrice{
   float: left;
   font-weight: bold;
   font-size: 16px;
   margin-top: 3px;
+}
+.presstakeWidgetContainer.small .presstakeListPrice{
+  font-size: 12px;
 }
 .presstakeShopButton{
   float: right;
@@ -153,18 +204,21 @@
   transition: transform .3s ease;
   transition: transform .3s ease, -webkit-transform .3s ease;
 }
+.presstakeWidgetContainer.small .presstakeShopButton{
+  display: none;
+}
 .presstakeShopButton:hover{
   -webkit-transform: translateX(-5px);
           transform: translateX(-5px);
 }
-.presstakeWidget_landscape .presstakeListButton_right{
+.presstakeWidget_horizontal .presstakeListButton_right{
   float: right;
 }
 /* подвал */
-.presstakeWidget_landscape .presstakeWidgetFooter{
+.presstakeWidget_horizontal .presstakeWidgetFooter{
   float: right;
 }
-.presstakeWidget_portrait .presstakeWidgetFooter{
+.presstakeWidget_vertical .presstakeWidgetFooter{
   text-align: center;
   font-size: 13px;
 }
@@ -173,7 +227,7 @@
   padding: 3px 6px;
   color: #00733f;
 }
-.presstakeWidget_landscape .presstakeFooterLink{
+.presstakeWidget_horizontal .presstakeFooterLink{
   display: inline-block;
   background: #efefef;
   border-radius: 0 0 5px 5px;
